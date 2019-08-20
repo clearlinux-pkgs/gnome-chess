@@ -1,0 +1,47 @@
+From 4b70160ed73a823223811764dceed1a81a12c100 Mon Sep 17 00:00:00 2001
+From: "Simental Magana, Marcos" <marcos.simental.magana@intel.com>
+Date: Tue, 20 Aug 2019 11:51:03 -0500
+Subject: [PATCH] stateless configuration
+
+Signed-off-by: Simental Magana, Marcos <marcos.simental.magana@intel.com>
+---
+ data/meson.build     | 2 +-
+ src/gnome-chess.vala | 3 +++
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/data/meson.build b/data/meson.build
+index cd8ef12..47b9da2 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -7,7 +7,7 @@ install_subdir('pieces',
+ 
+ # The engines.conf file
+ install_data('engines.conf',
+-  install_dir: pkgsysconfdir,
++  install_dir: join_paths('/usr/share/defaults', meson.project_name())
+ )
+ 
+ # The desktop file
+diff --git a/src/gnome-chess.vala b/src/gnome-chess.vala
+index 4369270..1742f50 100644
+--- a/src/gnome-chess.vala
++++ b/src/gnome-chess.vala
+@@ -193,12 +193,15 @@ Copyright © 2015–2016 Sahil Sareen""";
+         view_container.add (view);
+         view.show ();
+ 
++        var default_engine_cfg = Path.build_filename ("/usr/share/defaults", "gnome-chess", "engines.conf", null);
+         var system_engine_cfg = Path.build_filename (SYSCONFDIR, "gnome-chess", "engines.conf", null);
+         var user_engine_cfg = Path.build_filename (Environment.get_user_config_dir (), "gnome-chess", "engines.conf", null);
+         if (FileUtils.test (user_engine_cfg, FileTest.EXISTS))
+             ai_profiles = AIProfile.load_ai_profiles (user_engine_cfg);
+         else if (FileUtils.test (system_engine_cfg, FileTest.EXISTS))
+             ai_profiles = AIProfile.load_ai_profiles (system_engine_cfg);
++        else if (FileUtils.test (default_engine_cfg, FileTest.EXISTS))
++            ai_profiles = AIProfile.load_ai_profiles (default_engine_cfg);
+         else
+             warning ("engines.conf not found");
+ 
+-- 
+2.23.0
+
