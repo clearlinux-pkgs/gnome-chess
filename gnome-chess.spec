@@ -4,7 +4,7 @@
 #
 Name     : gnome-chess
 Version  : 3.32.0
-Release  : 1
+Release  : 2
 URL      : https://download.gnome.org/sources/gnome-chess/3.32/gnome-chess-3.32.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-chess/3.32/gnome-chess-3.32.0.tar.xz
 Summary  : Play the classic two-player boardgame of chess
@@ -20,6 +20,7 @@ BuildRequires : buildreq-gnome
 BuildRequires : buildreq-meson
 BuildRequires : librsvg-dev
 BuildRequires : pkgconfig(librsvg-2.0)
+Patch1: 0001-stateless-configuration.patch
 
 %description
 No detailed description available
@@ -77,13 +78,14 @@ man components for the gnome-chess package.
 
 %prep
 %setup -q -n gnome-chess-3.32.0
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1566316521
+export SOURCE_DATE_EPOCH=1566320258
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -113,6 +115,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 %files data
 %defattr(-,root,root,-)
 /usr/share/applications/org.gnome.Chess.desktop
+/usr/share/defaults/gnome-chess/engines.conf
 /usr/share/glib-2.0/schemas/org.gnome.Chess.gschema.xml
 /usr/share/gnome-chess/pieces/fancy/blackBishop.svg
 /usr/share/gnome-chess/pieces/fancy/blackKing.svg
