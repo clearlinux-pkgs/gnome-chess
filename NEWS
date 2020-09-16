@@ -1,3 +1,33 @@
+3.38.0 - September 11, 2020
+===========================
+
+- Updated translations
+
+3.37.3 - July 2, 2020
+=====================
+
+- Fix window switching to narrow mode when opening menu (#43, Brian Daniels)
+- Fix timed games opening as untimed games (#45, Amandeep Singh)
+- Various refactoring and preparation for GTK 4 (!17, Arnaud B.)
+
+3.37.2 - May 28, 2020
+=====================
+
+- Make easy mode vs. GNU Chess a bit easier (you'll still lose, #18)
+- Support D-Bus activation (Arnaud B., !20)
+- Updated translations
+
+3.37.1.1 - April 25, 2020
+=========================
+
+- Fix previous tag
+
+3.37.1 - April 25, 2020
+=======================
+
+- Various refactoring and preparation for GTK 4 (Arnaud B.)
+- Improve keyboard shortcuts dialog (Sabri Ünal, !14)
+
 3.36.0 - March 5, 2020
 ======================
 
