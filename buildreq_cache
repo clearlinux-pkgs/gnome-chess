@@ -1,4 +1,5 @@
-3.38.1
+40.0
+Vulkan-Headers-dev
 appstream-glib
 librsvg-dev
 pkgconfig(librsvg-2.0)
