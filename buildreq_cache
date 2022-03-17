@@ -1,4 +1,5 @@
-41.1
+42.0
 appstream-glib
 librsvg-dev
+pkgconfig(libadwaita-1)
 pkgconfig(librsvg-2.0)
