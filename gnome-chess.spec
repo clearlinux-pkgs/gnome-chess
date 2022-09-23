@@ -4,7 +4,7 @@
 #
 Name     : gnome-chess
 Version  : 43.0
-Release  : 15
+Release  : 16
 URL      : https://download.gnome.org/sources/gnome-chess/43/gnome-chess-43.0.tar.xz
 Source0  : https://download.gnome.org/sources/gnome-chess/43/gnome-chess-43.0.tar.xz
 Summary  : No detailed summary available
